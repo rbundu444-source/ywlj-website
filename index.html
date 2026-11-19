@@ -39,6 +39,26 @@ section{padding:88px 0}.section-kicker{color:#9a742f;font-weight:850;letter-spac
 .badge-scripture{font:italic 1.08rem Georgia,serif;color:#fff;border-left:3px solid #d9aa42;padding:4px 0 4px 17px;margin-top:22px}
 @media(max-width:700px){.badge-showcase{grid-template-columns:1fr;gap:28px}.badge-art{max-width:360px;margin:auto}.badge-copy{text-align:center}.badge-scripture{text-align:left}}
 
+
+.hope-feature{max-width:1000px;margin:36px auto 48px;padding:38px 42px;background:linear-gradient(115deg,#071b3a,#102c59);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:25px;position:relative;overflow:hidden}
+.hope-feature h3{font:700 clamp(1.8rem,4vw,2.8rem)/1.13 Georgia,serif;margin:15px 0;color:#fff}.hope-feature h3 em{color:#f0d69a;font-weight:400}
+.hope-feature p{color:#d8e0ed;max-width:620px;margin:0}.hope-feature-mark{font:10rem/.7 Georgia,serif;color:rgba(240,214,154,.22);padding-right:18px}
+.hope-archive-head{display:flex;justify-content:space-between;align-items:end;gap:22px;max-width:1000px;margin:0 auto 20px;text-align:left}
+.archive-title{font:700 1.8rem Georgia,serif;color:var(--navy);margin:7px 0}
+.hope-search-label{font-size:.78rem;color:var(--muted);font-weight:800;min-width:min(100%,300px)}
+.hope-search-label input{display:block;width:100%;margin-top:7px;padding:12px 14px;border:1px solid #d9deea;border-radius:3px;font:inherit;background:#fff;color:var(--ink)}
+.hope-archive{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.hope-empty{grid-column:1/-1;padding:35px;background:#fff;border:1px dashed #d8c79f;text-align:center;display:grid;gap:7px;color:var(--muted)}
+.hope-empty strong{font:700 1.2rem Georgia,serif;color:var(--navy)}
+.hope-entry{background:#fff;border:1px solid #e9e2d3;padding:25px;text-align:left;box-shadow:var(--shadow)}
+.hope-entry time{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#98712d}
+.hope-entry h4{font:700 1.35rem Georgia,serif;color:var(--navy);margin:9px 0}
+.hope-entry .hope-reference{font-size:.8rem;font-weight:800;color:#98712d;margin:0 0 12px}
+.hope-entry .hope-body{color:var(--muted);white-space:pre-wrap;line-height:1.75;margin:0}
+.hope-entry .hope-author{font-size:.72rem;color:#7b8493;margin-top:18px;font-weight:800;letter-spacing:.08em}
+.hope-no-results{grid-column:1/-1;padding:24px;text-align:center;color:var(--muted);background:#fff;border:1px solid var(--line)}
+@media(max-width:680px){.hope-feature{padding:28px 24px}.hope-feature-mark{font-size:6rem}.hope-archive-head{display:block}.hope-search-label{display:block;margin-top:18px}.hope-archive{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -133,11 +153,13 @@ section{padding:88px 0}.section-kicker{color:#9a742f;font-weight:850;letter-spac
   </div>
 </div></section>
 
-<section class="hope" id="hope"><div class="wrap center">
-  <span class="section-kicker">A daily word from our Chairman</span><h2 class="section-title">Words of Hope</h2>
-  <p class="section-lead">A daily programme led by our Chairman, Rev. Lawrence Kaikuda Onyx Fangawa, sharing written messages of preaching, encouragement and biblical instruction with the YWLJ family.</p>
-  <div class="hope-card"><div class="quote-mark">“</div><h3>Today's Word of Hope</h3><p class="hope-placeholder">The Chairman's daily message will be published here. Visit this space for scriptural encouragement and the daily teaching shared with our members.</p><p class="hope-byline">REV. LAWRENCE KAIKUDA ONYX FANGAWA · CHAIRMAN</p><span class="hope-tag">DAILY WORD · YWLJ</span></div>
-  <p class="small-note">Messages will be added here as they are received and approved for public sharing.</p>
+<section class="hope" id="hope"><div class="wrap">
+  <div class="center"><span class="section-kicker">A daily word from our Chairman</span><h2 class="section-title">Words of Hope</h2>
+  <p class="section-lead">A public daily preaching and encouragement programme led by our Chairman, Rev. Lawrence Kaikuda Onyx Fangawa. Every published message is available for visitors and the YWLJ family to read.</p></div>
+  <div class="hope-feature"><div><span class="hope-tag">YWLJ DAILY MINISTRY</span><h3>Faith for today.<br><em>Hope for every day.</em></h3><p>Scripture-based messages to strengthen faith, renew perspective and encourage a life of devotion to Jesus Christ.</p></div><div class="hope-feature-mark">“</div></div>
+  <div class="hope-archive-head"><div><span class="section-kicker">Read and revisit</span><h3 class="archive-title">The Message Archive</h3><p class="small-note">Browse previous Words of Hope. New entries will appear here as they are published.</p></div><label class="hope-search-label" for="hopeSearch">Search messages<input id="hopeSearch" type="search" placeholder="Search title, scripture or words…"></label></div>
+  <div class="hope-archive" id="hopeArchive" aria-live="polite"><div class="hope-empty"><strong>The first Word of Hope is coming soon.</strong><span>There are no published messages in the archive yet. Please check back for the Chairman's daily teaching.</span></div></div>
+  <p class="hope-byline">REV. LAWRENCE KAIKUDA ONYX FANGAWA · CHAIRMAN</p>
 </div></section>
 
 <section class="leadership" id="leadership"><div class="wrap">
@@ -187,6 +209,32 @@ const navLinks=document.getElementById('navLinks');
 menuBtn.addEventListener('click',()=>{const opened=navLinks.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(opened));menuBtn.setAttribute('aria-label',opened?'Close navigation':'Open navigation')});
 navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Open navigation')}));
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// PUBLIC WORDS OF HOPE ARCHIVE
+// Add each approved message below. Newest messages appear first.
+// Example: {date:"2026-11-19", title:"A Heart That Trusts God", scripture:"Proverbs 3:5–6 (KJV)", message:"Paste the Chairman's approved message here."}
+const hopeMessages = [];
+const hopeArchive = document.getElementById('hopeArchive');
+const hopeSearch = document.getElementById('hopeSearch');
+function renderHopeMessages(){
+  const query=(hopeSearch.value||'').trim().toLowerCase();
+  const matches=hopeMessages
+    .filter(item=>[item.title,item.scripture,item.message,item.date].join(' ').toLowerCase().includes(query))
+    .sort((a,b)=>b.date.localeCompare(a.date));
+  if(!hopeMessages.length){
+    hopeArchive.innerHTML='<div class="hope-empty"><strong>The first Word of Hope is coming soon.</strong><span>There are no published messages in the archive yet. Please check back for the Chairman\'s daily teaching.</span></div>';
+    return;
+  }
+  if(!matches.length){hopeArchive.innerHTML='<div class="hope-no-results">No messages match your search. Try another word or scripture reference.</div>';return;}
+  hopeArchive.innerHTML=matches.map(item=>{
+    const safeDate=new Date(item.date+'T12:00:00');
+    const displayDate=Number.isNaN(safeDate.getTime())?item.date:safeDate.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+    const escapeText=value=>String(value||'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+    return '<article class="hope-entry"><time datetime="'+escapeText(item.date)+'">'+escapeText(displayDate)+'</time><h4>'+escapeText(item.title)+'</h4><p class="hope-reference">'+escapeText(item.scripture)+'</p><p class="hope-body">'+escapeText(item.message)+'</p><p class="hope-author">REV. LAWRENCE KAIKUDA ONYX FANGAWA · CHAIRMAN</p></article>';
+  }).join('');
+}
+hopeSearch.addEventListener('input',renderHopeMessages);
+renderHopeMessages();
 </script>
 </body>
 </html>
