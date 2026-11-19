@@ -1,0 +1,26 @@
+backend:
+  name: turbo-github
+  turbo_site_id: REPLACE_WITH_YOUR_DECAP_TURBO_SITE_ID
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "words_of_hope"
+    label: "Words of Hope"
+    files:
+      - name: "daily_archive"
+        label: "Daily Messages"
+        file: "words-of-hope.json"
+        format: "json"
+        fields:
+          - label: "Messages"
+            name: "messages"
+            widget: "list"
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - { label: "Publication date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Scripture reference", name: "scripture", widget: "string" }
+              - { label: "Full devotional text", name: "message", widget: "text" }
